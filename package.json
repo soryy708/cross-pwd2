@@ -1,0 +1,26 @@
+{
+    "name": "cross-pwd2",
+    "version": "0.0.0-semantically-released",
+    "description": "Run scripts that use the current working directory across platforms",
+    "main": "src/index.js",
+    "bin": {
+        "cross-pwd2": "src/bin.js",
+        "cross-pwd2-shell": "src/shell.js"
+    },
+    "files": [
+        "src"
+    ],
+    "keywords": [
+        "cross",
+        "platform",
+        "windows",
+        "current",
+        "working",
+        "directory"
+    ],
+    "author": "Ivan Rubinson",
+    "license": "MIT",
+    "dependencies": {
+        "cross-spawn": "^7.0.3"
+    }
+}
