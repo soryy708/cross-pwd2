@@ -1,6 +1,6 @@
 {
     "name": "cross-pwd2",
-    "version": "0.0.0-semantically-released",
+    "version": "1.0.0",
     "description": "Run scripts that use the current working directory across platforms",
     "main": "src/index.js",
     "bin": {
