@@ -2,7 +2,7 @@ const crossSpawn = require('cross-spawn');
 
 function crossPwd2(args, options = {}) {
     const currentWorkingDirectory = process.cwd();
-    const replacedArgs = args.map(arg => arg.replace(/\$\{pwd\}/gu, currentWorkingDirectory));
+    const replacedArgs = args.map(arg => arg.replace(/\$\(pwd\)|\$\{PWD\}/gu, currentWorkingDirectory));
     const command = replacedArgs[0];
     const commandArgs = replacedArgs.slice(1);
     const proc = crossSpawn.spawn(
