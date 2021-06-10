@@ -1,6 +1,6 @@
 {
     "name": "cross-pwd2",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Run scripts that use the current working directory across platforms",
     "main": "src/index.js",
     "bin": {
@@ -23,5 +23,23 @@
     "repository": "github:soryy708/cross-pwd2",
     "dependencies": {
         "cross-spawn": "^7.0.3"
+    },
+    "jest": {
+        "coverageDirectory": "../coverage",
+        "moduleFileExtensions": [
+            "js",
+            "json"
+        ],
+        "rootDir": "test",
+        "testEnvironment": "node",
+        "testRegex": ".spec.js$"
+    },
+    "scripts": {
+        "test": "jest",
+        "test:cov": "jest --coverage",
+        "test:watch": "jest --watch"
+    },
+    "devDependencies": {
+        "jest": "27.0.4"
     }
 }
