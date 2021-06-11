@@ -1,8 +1,17 @@
 const crossSpawn = require('cross-spawn');
 
+const rexpReplaceToCwd = /(?<!\\)\$(\(pwd\)|\{pwd\}|pwd\b)|`pwd`/gui;
+const rexpRemoveEscaping = /\\(\$(\(pwd\)|\{pwd\}|pwd\b))/gui;
+
+function pwdSubstitute(args, currentWorkingDirectory) {
+  return args
+    .map(arg => arg.replace(rexpReplaceToCwd, currentWorkingDirectory))
+    .map(arg => arg.replace(rexpRemoveEscaping, '$1'));
+}
+
 function crossPwd2(args, options = {}) {
     const currentWorkingDirectory = process.cwd();
-    const replacedArgs = args.map(arg => arg.replace(/\$\{pwd\}/gu, currentWorkingDirectory));
+    const replacedArgs = pwdSubstitute(args, currentWorkingDirectory);
     const command = replacedArgs[0];
     const commandArgs = replacedArgs.slice(1);
     const proc = crossSpawn.spawn(
@@ -25,4 +34,7 @@ function crossPwd2(args, options = {}) {
     return proc;
 }
 
-module.exports = crossPwd2;
+module.exports = {
+  pwdSubstitute,
+  crossPwd2
+};
